@@ -15,5 +15,8 @@
     = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
   %body
-    .main-container.my-5
-      = yield
+    = render 'shared/toast'
+    %main.d-flex.flex-nowrap
+      = render 'layouts/admins/sidebar'
+      .container.my-5
+        = yield
