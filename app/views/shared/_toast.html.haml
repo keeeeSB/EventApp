@@ -1,0 +1,10 @@
+- if notice.present? || alert.present?
+  .position-fixed.top-0.end-0.m-4.z-1
+    .toast.show.align-items-center.border-0{
+      class: class_names({ 'bg-primary': notice.present?, 'bg-danger': alert.present? }),
+      role: 'alert'
+    }
+      .d-flex.align-items-center
+        .toast-body.text-white.flex-grow-1
+          = notice || alert
+        %button.btn-close.btn-close-white.me-3.m-auto{ 'data-bs-dismiss': 'toast', type: 'button' }
