@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   get 'up' => 'rails/health#show', as: :rails_health_check
 end

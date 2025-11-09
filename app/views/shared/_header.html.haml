@@ -1,0 +1,24 @@
+%header
+  %nav.navbar.navbar-light.border-bottom.mb-4
+    .container-fluid.d-flex.flex-column.align-items-center
+      = link_to 'EventApp', root_path, class: 'navbar-brand fw-bold text-decoration-none fs-2'
+
+      .d-flex.w-100.justify-content-between
+        %ul.navbar-nav.d-flex.flex-row.gap-3
+          %li.nav-item
+            = link_to 'ホーム', root_path, class: 'nav-link'
+          - if user_signed_in?
+            %li.nav-item
+              = link_to 'イベント作成', '#', class: 'nav-link'
+
+        %ul.navbar-nav.d-flex.flex-row.gap-3
+          - if user_signed_in?
+            %li.nav-item
+              = link_to current_user.name, '#', class: 'btn btn-outline-success btn-sm'
+            %li.nav-item
+              = button_to 'ログアウト', destroy_user_session_path, method: :delete, form: { class: 'd-inline' }, class: 'btn btn-outline-secondary btn-sm'
+          - else
+            %li.nav-item
+              = link_to '新規登録', new_user_registration_path, class: 'btn btn-outline-success btn-sm'
+            %li.nav-item
+              = link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-primary btn-sm'
