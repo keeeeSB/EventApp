@@ -1,35 +1,43 @@
-name: CI
+name: RSpec
 
-on:
-  pull_request:
-    branches:
-      - '*'
+on: [pull_request]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    services:
+      postgres:
+        image: postgres:16
+        ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:password@localhost:5432/postgres
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.4.4
+          bundler-cache: true
 
-      - name: Cache gems
-        uses: actions/cache@v4
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Install gems
+      - name: Set up database
         run: |
-          bundle config set path 'vendor/bundle'
-          bundle install --jobs 4 --retry 3
+          bin/rails db:create
+          bin/rails db:schema:load
+
+      - name: Precompile assets
+        run: bundle exec rails assets:precompile
 
       - name: Run RSpec
         run: bundle exec rspec
