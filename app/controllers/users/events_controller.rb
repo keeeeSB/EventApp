@@ -5,6 +5,9 @@ class Users::EventsController < Users::ApplicationController
     @event = current_user.events.build
   end
 
+  def edit
+  end
+
   def create
     @event = current_user.events.build(event_params)
     if @event.save
@@ -13,9 +16,6 @@ class Users::EventsController < Users::ApplicationController
       flash.now[:alert] = 'イベントを作成できませんでした。'
       render :new, status: :unprocessable_content
     end
-  end
-
-  def edit
   end
 
   def update

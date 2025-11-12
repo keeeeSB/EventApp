@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :events, only: %i[new create edit update destroy]
+    resources :events, only: %i[new edit create update destroy]
   end
 
   resources :events, only: %i[show] do
