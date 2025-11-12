@@ -8,4 +8,6 @@ class Event < ApplicationRecord
   validates :venue, presence: true
 
   scope :default_order, -> { order(id: :asc) }
+  scope :upcoming, -> { where('started_at >= ?', Time.current) }
+  scope :past, -> { where('started_at < ?', Time.current) }
 end
