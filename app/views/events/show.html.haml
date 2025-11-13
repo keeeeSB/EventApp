@@ -1,0 +1,20 @@
+%h2.text-center.mb-3 イベント詳細
+
+.row.justify-content-center
+  .col-md-7
+    .card.mb-3.shadow-sm.border-0.rounded-3
+      .card-body.py-3.text-center
+        %h4.card-title.fw-semibold.mb-3= @event.title
+        %p.mb-1.small
+          %strong= @event.description
+        %p.mb-1.small
+          開催日時：
+          %strong= l(@event.started_at, format: :default)
+        %p.mb-1.small
+          開催場所：
+          %strong= @event.venue
+        %span.badge.bg-primary
+          .bi.bi-tag= @event.category.name
+
+.text-center.mt-3
+  = link_to '未開催イベント一覧へ', upcoming_events_path, class: 'btn btn-outline-primary'
