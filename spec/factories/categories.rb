@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :category do
-    name { 'スポーツ' }
+    sequence(:name) { "カテゴリー#{_1}"}
   end
 end
