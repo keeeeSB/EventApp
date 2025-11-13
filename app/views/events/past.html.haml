@@ -1,0 +1,9 @@
+%h2.text-center.mb-3 開催済みイベント一覧
+
+.row.justify-content-center
+  .col-md-6
+    - if @events.exists?
+      - @events.preload(:user, :category).each do |event|
+        = render 'events/event-card', event:
+    - else
+      %p.text-center 開催済みのイベントはありません。

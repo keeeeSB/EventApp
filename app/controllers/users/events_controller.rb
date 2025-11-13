@@ -11,7 +11,7 @@ class Users::EventsController < Users::ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to users_event_path(@event), notice: 'イベントを作成しました。'
+      redirect_to event_path(@event), notice: 'イベントを作成しました。'
     else
       flash.now[:alert] = 'イベントを作成できませんでした。'
       render :new, status: :unprocessable_content
@@ -20,7 +20,7 @@ class Users::EventsController < Users::ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to users_event_path(@event), notice: 'イベント情報を更新しました。'
+      redirect_to event_path(@event), notice: 'イベント情報を更新しました。'
     else
       flash.now[:alert] = 'イベント情報を更新できませんでした。'
       render :edit, status: :unprocessable_content
