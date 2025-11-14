@@ -12,3 +12,13 @@
       %strong= event.venue
     %span.badge.bg-primary
       .bi.bi-tag= event.category.name
+
+    - if event.user == current_user
+      .text-end
+        = link_to '編集', edit_users_event_path(current_user, event), class: 'btn btn-sm btn-outline-warning me-2'
+        = button_to '削除',
+                    users_event_path(current_user, event),
+                    method: :delete,
+                    data: { turbo_confirm: '本当に削除しますか？' },
+                    form: { class: 'd-inline' },
+                    class: 'btn btn-sm btn-outline-danger'
