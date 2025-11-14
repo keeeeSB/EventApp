@@ -5,15 +5,18 @@
     .card.mb-3.shadow-sm.border-0.rounded-3
       .card-body.py-3.text-center
         %h4.card-title.fw-semibold.mb-3= @event.title
-        %p.mb-1.small
+        %p.mb-2.small
           %strong= @event.description
-        %p.mb-1.small
+        %p.mb-2.small
+          作成者：
+          %strong.text-success= @event.user.name
+        %p.mb-2.small
           開催日時：
           %strong= l(@event.started_at, format: :default)
-        %p.mb-1.small
+        %p.mb-2.small
           開催場所：
           %strong= @event.venue
-        %span.badge.bg-primary
+        %span.badge.bg-primary.fs-6
           .bi.bi-tag= @event.category.name
 
 .text-center.mt-3

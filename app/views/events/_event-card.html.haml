@@ -1,14 +1,14 @@
-= link_to event_path(event), class: 'text-decoration-none' do
-  .card.mb-3.shadow-sm.border-0.rounded-3
-    .card-body.py-3.text-center
+.card.mb-3.shadow-sm.border-0.rounded-3
+  .card-body.py-3.text-center
+    = link_to event_path(event), class: 'text-decoration-none text-black' do
       %h4.card-title.fw-semibold.mb-3= event.title
-      %p.mb-1.small
-        %strong= event.description
-      %p.mb-1.small
-        開催日時：
-        %strong= l(event.started_at, format: :default)
-      %p.mb-1.small
-        開催場所：
-        %strong= event.venue
-      %span.badge.bg-primary
-        .bi.bi-tag= event.category.name
+    %p.mb-1.small
+      %strong= event.description
+    %p.mb-1.small
+      開催日時：
+      %strong= l(event.started_at, format: :default)
+    %p.mb-1.small
+      開催場所：
+      %strong= event.venue
+    %span.badge.bg-primary
+      .bi.bi-tag= event.category.name
