@@ -3,3 +3,9 @@ ja:
     attributes:
       category:
         name: カテゴリー名
+      event:
+        title: タイトル
+        description: 説明
+        started_at: 開催日時
+        venue: 開催場所
+        category: カテゴリー

@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/SonicGarden/sgcop.git
-  revision: ec92a6654ed86986f35b95efa0de994c7e0666f7
+  revision: 212765c879998664ff5863d2646a98974875f785
   branch: main
   specs:
-    sgcop (1.24.6)
+    sgcop (1.25.0)
       rubocop (~> 1.81.1)
       rubocop-capybara (~> 2.22.0)
       rubocop-factory_bot (~> 2.27.0)
@@ -74,8 +74,6 @@ GEM
       activerecord (= 8.0.4)
       activesupport (= 8.0.4)
       marcel (~> 1.0)
-    activestorage-validator (0.5.0)
-      rails (>= 6.1.0)
     activesupport (8.0.4)
       base64
       benchmark (>= 0.3)
@@ -492,7 +490,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  activestorage-validator
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller

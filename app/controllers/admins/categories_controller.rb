@@ -26,8 +26,7 @@ class Admins::CategoriesController < Admins::ApplicationController
   end
 
   def update
-    @category.update(category_params)
-    if @category.save
+    if @category.update(category_params)
       redirect_to admins_category_path(@category), notice: 'カテゴリーを更新しました。'
     else
       flash.now[:alert] = 'カテゴリーを更新できませんでした。'
