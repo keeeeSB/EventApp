@@ -38,7 +38,6 @@
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v8.0.4, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v8.0.4, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v8.0.4, rbenv: 3.4.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activestorage-validator (v0.5.0, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v8.0.4, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.7, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.3, rbenv: 3.4.4) [gem]" level="application" />
@@ -162,7 +161,7 @@
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.38.0, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sexp_processor (v4.17.4, rbenv: 3.4.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sgcop (v1.24.6@ec92a6, rbenv: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sgcop (v1.25.0@212765, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simple_form (v5.4.0, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_cable (v3.0.12, rbenv: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_cache (v1.0.8, rbenv: 3.4.4) [gem]" level="application" />

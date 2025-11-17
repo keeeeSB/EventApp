@@ -9,7 +9,18 @@ Rails.application.routes.draw do
     resources :categories, only: %i[index show new edit create update destroy]
   end
 
-  root 'static_pages#home'
+  namespace :users do
+    resources :events, only: %i[new edit create update destroy]
+  end
+
+  resources :events, only: %i[show] do
+    collection do
+      get :upcoming
+      get :past
+    end
+  end
+
+  root 'events#upcoming'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 

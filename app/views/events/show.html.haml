@@ -1,0 +1,33 @@
+%h2.text-center.mb-3 イベント詳細
+
+.row.justify-content-center
+  .col-md-7
+    .card.mb-3.shadow-sm.border-0.rounded-3
+      .card-body.py-3.text-center
+        %h4.card-title.fw-semibold.mb-3= @event.title
+        %p.mb-2
+          %strong= @event.description
+        %p.mb-2
+          作成者：
+          %strong.text-success= @event.user.name
+        %p.mb-2
+          開催日時：
+          %strong= l(@event.started_at, format: :default)
+        %p.mb-2
+          開催場所：
+          %strong= @event.venue
+        %span.badge.bg-primary.fs-6
+          .bi.bi-tag= @event.category.name
+
+        - if @event.user == current_user
+          .text-end
+            = link_to '編集', edit_users_event_path(@event), class: 'btn btn-sm btn-outline-warning me-2'
+            = button_to '削除',
+                        users_event_path(@event),
+                        method: :delete,
+                        data: { turbo_confirm: '本当に削除しますか？' },
+                        form: { class: 'd-inline' },
+                        class: 'btn btn-sm btn-outline-danger'
+
+.text-center.mt-3
+  = link_to '未開催イベント一覧へ', upcoming_events_path, class: 'btn btn-outline-primary'
