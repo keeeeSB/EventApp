@@ -9,7 +9,7 @@
             = link_to 'ホーム', root_path, class: 'nav-link ms-3'
           - if user_signed_in?
             %li.nav-item
-              = link_to 'イベント作成', new_users_event_path(current_user), class: 'nav-link'
+              = link_to 'イベント作成', new_users_event_path, class: 'nav-link'
             %li.nav-item
               = link_to '未開催イベント', upcoming_events_path, class: 'nav-link'
             %li.nav-item

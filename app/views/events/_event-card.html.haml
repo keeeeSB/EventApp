@@ -2,7 +2,7 @@
   .card-body.py-3.text-center
     = link_to event_path(event), class: 'text-decoration-none text-black' do
       %h4.card-title.fw-semibold.mb-3= event.title
-    %p.mb-1.small
+    %p.mb-1
       %strong= event.description
     %p.mb-1.small
       開催日時：
@@ -15,9 +15,9 @@
 
     - if event.user == current_user
       .text-end
-        = link_to '編集', edit_users_event_path(current_user, event), class: 'btn btn-sm btn-outline-warning me-2'
+        = link_to '編集', edit_users_event_path(event), class: 'btn btn-sm btn-outline-warning me-2'
         = button_to '削除',
-                    users_event_path(current_user, event),
+                    users_event_path(event),
                     method: :delete,
                     data: { turbo_confirm: '本当に削除しますか？' },
                     form: { class: 'd-inline' },

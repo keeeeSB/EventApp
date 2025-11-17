@@ -29,7 +29,7 @@ class Users::EventsController < Users::ApplicationController
 
   def destroy
     @event.destroy!
-    redirect_to
+    redirect_to root_path, notice: 'イベントを削除しました。', status: :see_other
   end
 
   private

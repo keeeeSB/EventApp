@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :event do
     title { 'Ruby勉強会' }
     description { '勉強会を開催します！' }
-    started_at { Tine.current + 1.day }
+    started_at { Time.current + 1.day }
     venue { '各家庭' }
     user
     category
