@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_11_032528) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_17_191534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -27,6 +27,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_11_032528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_entries_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_entries_on_user_id_and_event_id", unique: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -61,6 +71,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_11_032528) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entries", "events"
+  add_foreign_key "entries", "users"
   add_foreign_key "events", "categories"
   add_foreign_key "events", "users"
 end
