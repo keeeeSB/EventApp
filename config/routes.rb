@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :events, only: %i[new edit create update destroy]
+    resources :events, only: %i[new edit create update destroy] do
+      resources :entries, only: %i[index update], module: :events
+    end
   end
 
   resources :events, only: %i[show] do
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
       get :upcoming
       get :past
     end
+    resource :entry, only: %i[create destroy], module: :events
   end
 
   root 'events#upcoming'
