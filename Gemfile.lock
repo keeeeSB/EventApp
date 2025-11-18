@@ -74,8 +74,6 @@ GEM
       activerecord (= 8.0.4)
       activesupport (= 8.0.4)
       marcel (~> 1.0)
-    activestorage-validator (0.5.0)
-      rails (>= 6.1.0)
     activesupport (8.0.4)
       base64
       benchmark (>= 0.3)
@@ -492,7 +490,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  activestorage-validator
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
