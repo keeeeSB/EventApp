@@ -2,7 +2,7 @@ class Events::EntriesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @entry = current_user.entry.build(event_id: params[:id])
+    @entry = current_user.entries.build(event_id: params[:event_id])
     if @entry.save
       redirect_to event_path(@entry.event), notice: 'イベントへ参加申し込みを行いました。'
     else
@@ -11,7 +11,7 @@ class Events::EntriesController < ApplicationController
   end
 
   def destroy
-    @entry = current_user.entry.find_by(event_id: params[:id])
+    @entry = current_user.entries.find_by(event_id: params[:event_id])
     @entry.destroy!
     redirect_to event_path(@entry.event), notice: '参加申し込みを取り消しました。'
   end

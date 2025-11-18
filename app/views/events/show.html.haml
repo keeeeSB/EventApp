@@ -4,6 +4,15 @@
   .col-md-7
     .card.mb-3.shadow-sm.border-0.rounded-3
       .card-body.py-3.text-center
+        - if user_signed_in?
+          .position-absolute.top-0.end-0.mt-3.me-3
+            - if @event.user != current_user
+              - if current_user.entries.exists?(event_id: @event.id)
+                = button_to event_entry_path(@event), method: :delete, class: 'btn btn-sm btn-outline-danger' do
+                  参加取消し
+              - else
+                = button_to event_entry_path(@event), class: 'btn btn-sm btn-outline-primary' do
+                  参加申し込み
         %h4.card-title.fw-semibold.mb-3= @event.title
         %p.mb-2
           %strong= @event.description
