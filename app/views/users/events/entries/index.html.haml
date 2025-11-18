@@ -1,0 +1,25 @@
+%h2.text-center.mb-4 参加申し込み一覧
+
+.row.justify-content-center
+  .col-md-8
+    - if @entries.exists?
+      %table.table.table-bordered.align-middle.text-center
+        %thead
+          %tr
+            %th 参加者名
+            %th 参加状況
+            %th 操作
+        %tbody
+          - @entries.each do |entry|
+            %tr
+              %td= entry.user.name
+              %td= render 'users/events/entries/status_badge', entry:
+              %td
+                = button_to users_event_entry_path(entry.event), method: :patch, class: 'btn btn-sm btn-outline-success me-2' do
+                  = hidden_field_tag :status,:accepted
+                  参加を許可
+                = button_to users_event_entry_path(entry.event), method: :patch, class: 'btn btn-sm btn-outline-danger' do
+                  = hidden_field_tag :status, :rejected
+                  参加を却下
+    - else
+      %p.text-center 参加申し込みがありません。
