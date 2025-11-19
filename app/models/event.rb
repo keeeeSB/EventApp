@@ -12,4 +12,8 @@ class Event < ApplicationRecord
   scope :default_order, -> { order(id: :asc) }
   scope :upcoming, -> { where('started_at >= ?', Time.current) }
   scope :past, -> { where('started_at < ?', Time.current) }
+
+  def upcoming?
+    started_at >= Time.current
+  end
 end

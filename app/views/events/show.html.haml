@@ -6,7 +6,7 @@
       .card-body.py-3.text-center
         - if user_signed_in?
           .position-absolute.top-0.end-0.mt-3.me-3
-            - if @event.user != current_user
+            - if @event.user != current_user && @event.upcoming?
               - if current_user.entries.exists?(event_id: @event.id)
                 = button_to event_entry_path(@event), method: :delete, class: 'btn btn-sm btn-outline-danger' do
                   参加取消し
