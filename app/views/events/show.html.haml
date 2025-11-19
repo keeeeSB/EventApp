@@ -25,6 +25,11 @@
         %p.mb-2
           開催場所：
           %strong= @event.venue
+        %p.mb-2
+          参加人数：
+          %strong
+            = @event.entries_count
+            人
         %span.badge.bg-primary.fs-6
           .bi.bi-tag= @event.category.name
 
