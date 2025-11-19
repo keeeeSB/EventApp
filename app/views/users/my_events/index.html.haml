@@ -1,0 +1,25 @@
+%h2.text-center.mb-4 参加予定イベント一覧
+
+.row.justify-content-center
+  .col-md-8
+    - if @events.exists?
+      %table.table.align-middle.text-center
+        %thead
+          %tr
+            %th イベント名
+            %th 参加人数
+            %th 参加状況
+            %th 操作
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td= event.title
+              %td
+                = event.entries.count
+                人
+              - user_entry = current_user.entries.find_by(event_id: event.id)
+              %td= render 'shared/entry_status_badge', entry: user_entry
+              %td
+                = link_to '詳細', event_path(event), class: 'btn btn-sm btn-outline-secondary'
+    - else
+      %p.text-center 参加予定のイベントはありません。
