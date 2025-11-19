@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def upcoming
-    @events = Event.upcoming.order(started_at: :asc, id: :asc).page(params[:page])
+    @events = Event.upcoming.popular.page(params[:page])
   end
 
   def past
