@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :events, only: %i[new edit create update destroy] do
       resources :entries, only: %i[index update], module: :events
     end
+    resources :my_events, only: %i[index]
   end
 
   resources :events, only: %i[show] do
