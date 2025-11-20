@@ -1,4 +1,6 @@
 class Users::Events::EntriesController < Users::ApplicationController
+  before_action :set_event
+
   def index
     @entries = @event.entries.default_order
   end

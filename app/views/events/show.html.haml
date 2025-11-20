@@ -44,4 +44,6 @@
                         class: 'btn btn-sm btn-outline-danger'
 
 .text-center.mt-3
-  = link_to '未開催イベント一覧へ', upcoming_events_path, class: 'btn btn-outline-primary'
+  = link_to '未開催イベント一覧へ', upcoming_events_path, class: 'btn btn-outline-primary me-3'
+  - if @event.user == current_user
+    = link_to '参加者一覧へ', users_event_entries_path(@event), class: 'btn btn-outline-secondary'
