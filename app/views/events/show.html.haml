@@ -9,7 +9,7 @@
             - if @event.user != current_user && @event.upcoming?
               - if current_user.entries.exists?(event_id: @event.id)
                 = button_to event_entry_path(@event), method: :delete, class: 'btn btn-sm btn-outline-danger' do
-                  参加取消し
+                  参加取り消し
               - else
                 = button_to event_entry_path(@event), class: 'btn btn-sm btn-outline-primary' do
                   参加申し込み
