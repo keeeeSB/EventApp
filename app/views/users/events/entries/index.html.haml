@@ -9,7 +9,8 @@
             %th 参加者名
             %th 申し込み日時
             %th 参加状況
-            %th 操作
+            - if @event.upcoming?
+              %th 操作
         %tbody
           - @entries.each do |entry|
             %tr
@@ -18,10 +19,19 @@
               %td= render 'shared/entry_status_badge', entry:
               - if entry.event.upcoming?
                 %td
-                  - if entry.rejected?
+                  - if entry.pending?
                     = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-success me-2' do
                       = hidden_field_tag :status, :accepted
                       参加を許可
+                    = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-danger' do
+                      = hidden_field_tag :status, :rejected
+                      参加を却下
+
+                  - elsif entry.rejected?
+                    = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-success' do
+                      = hidden_field_tag :status, :accepted
+                      参加を許可
+
                   - else
                     = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-danger' do
                       = hidden_field_tag :status, :rejected
