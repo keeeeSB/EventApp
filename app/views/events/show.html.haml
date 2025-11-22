@@ -7,12 +7,15 @@
         - if user_signed_in?
           .position-absolute.top-0.end-0.mt-3.me-3
             - if @event.user != current_user && @event.upcoming?
-              - if current_user.entries.exists?(event_id: @event.id)
-                = button_to event_entry_path(@event), method: :delete, class: 'btn btn-sm btn-outline-danger' do
-                  参加取り消し
-              - else
+              - entry = current_user.entries.find_by(event_id: @event.id)
+              - if entry.nil?
                 = button_to event_entry_path(@event), class: 'btn btn-sm btn-outline-primary' do
                   参加申し込み
+              - elsif entry.accepted? || entry.rejected?
+                = render 'shared/entry_status_badge', entry:
+              - else
+                = button_to event_entry_path(@event), method: :delete, class: 'btn btn-sm btn-primary' do
+                  参加申し込み中
         %h4.card-title.fw-semibold.mb-3= @event.title
         %p.mb-2
           %strong= @event.description

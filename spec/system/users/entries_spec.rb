@@ -25,8 +25,8 @@ RSpec.describe '参加申し込み機能', type: :system do
           expect(page).to have_current_path event_path(upcoming_event)
         }.to change(upcoming_event.entries, :count).by(1)
 
-        expect(page).to have_button '参加取り消し'
-        expect(page).not_to have_button '参加申し込み'
+        expect(page).to have_button '参加申し込み中'
+        expect(page).not_to have_button '参加申し込み', exact: true
       end
 
       it 'ログイン中のユーザーは、参加申し込みを取り消すことができる' do
@@ -39,17 +39,17 @@ RSpec.describe '参加申し込み機能', type: :system do
         expect(page).to have_content 'Ruby勉強会'
         expect(page).to have_content '勉強会を開催します。'
         expect(page).to have_content '作成者： ボブ'
-        expect(page).to have_button '参加取り消し'
+        expect(page).to have_button '参加申し込み中'
         expect(page).to have_content '開催日時： 2030年1月1日 12:00'
 
         expect {
-          click_button '参加取り消し'
+          click_button '参加申し込み中'
           expect(page).to have_content '参加申し込みを取り消しました。'
           expect(page).to have_current_path event_path(upcoming_event)
         }.to change(upcoming_event.entries, :count).by(-1)
 
         expect(page).to have_button '参加申し込み'
-        expect(page).not_to have_button '参加取り消し'
+        expect(page).not_to have_button '参加申し込み中'
       end
     end
 

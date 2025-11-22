@@ -20,12 +20,13 @@
               - if entry.event.upcoming?
                 %td
                   - if entry.pending?
-                    = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-success me-2' do
-                      = hidden_field_tag :status, :accepted
-                      参加を許可
-                    = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-danger' do
-                      = hidden_field_tag :status, :rejected
-                      参加を却下
+                    .d-flex.justify-content-center.gap-2
+                      = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-success me-2' do
+                        = hidden_field_tag :status, :accepted
+                        参加を許可
+                      = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-danger' do
+                        = hidden_field_tag :status, :rejected
+                        参加を却下
 
                   - elsif entry.rejected?
                     = button_to users_event_entry_path(entry.event, entry), method: :patch, class: 'btn btn-sm btn-outline-success' do
