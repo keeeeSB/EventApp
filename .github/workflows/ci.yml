@@ -32,6 +32,11 @@ jobs:
           ruby-version: 3.4.4
           bundler-cache: true
 
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable chromium-chromedriver
+
       - name: Set up database
         run: |
           bin/rails db:create
