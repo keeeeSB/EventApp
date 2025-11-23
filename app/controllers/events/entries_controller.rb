@@ -1,6 +1,4 @@
-class Events::EntriesController < ApplicationController
-  before_action :authenticate_user!
-
+class Events::EntriesController < Events::ApplicationController
   def create
     @entry = current_user.entries.build(event_id: params[:event_id])
     if @entry.save
