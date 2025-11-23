@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       get :past
     end
     resource :entry, only: %i[create destroy], module: :events
-    resource :review, only: %i[new edit create update destroy]
+    resource :review, only: %i[new edit create update destroy], module: :events
   end
 
   root 'events#upcoming'
