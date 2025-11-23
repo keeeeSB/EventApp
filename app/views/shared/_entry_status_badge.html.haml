@@ -1,0 +1,8 @@
+- if entry.pending?
+  %span.badge.bg-primary.fs-6 申し込み中
+
+- elsif entry.accepted?
+  %span.badge.bg-success.fs-6 参加
+
+- elsif entry.rejected?
+  %span.badge.bg-danger.fs-6 却下

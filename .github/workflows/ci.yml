@@ -22,6 +22,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: postgres://postgres:password@localhost:5432/postgres
+      TZ: "Asia/Tokyo"
 
     steps:
       - uses: actions/checkout@v4

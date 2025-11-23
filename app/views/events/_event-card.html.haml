@@ -10,6 +10,11 @@
     %p.mb-1.small
       開催場所：
       %strong= event.venue
+    %p.mb-1.small
+      参加人数：
+      %strong
+        = event.entries_count
+        人
     %span.badge.bg-primary
       .bi.bi-tag= event.category.name
 
