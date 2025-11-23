@@ -46,6 +46,27 @@
                         form: { class: 'd-inline' },
                         class: 'btn btn-sm btn-outline-danger'
 
+  - if @event.past?
+    .text-center.mb-3
+      - if @event.reviews.find_by(user: current_user).nil?
+        = link_to 'レビューを投稿する', new_event_review_path(@event), class: 'btn btn-link text-secondary'
+      - else
+        %p 既にレビューを投稿済みです。
+
+  - @event.reviews.preload(:user).order(created_at: :desc, id: :desc).each do |review|
+    .card.mb-3.shadow-sm.rounded-3
+      .card-body
+        .d-flex.justify-content-between.align-items-center.mb-2
+          %strong= review.user.name
+          %small.text-muted= l(review.created_at, format: :short)
+        .mb-2
+          - 5.times do |i|
+            - if i < review.rating
+              %span.text-warning.bi.bi-star-fill
+            - else
+              %span.text-secondary.bi.bi-star
+        %p= review.comment.presence || 'コメントなし'
+
 .text-center.mt-3
   = link_to '未開催イベント一覧へ', upcoming_events_path, class: 'btn btn-outline-primary me-3'
   - if @event.user == current_user

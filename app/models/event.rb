@@ -18,4 +18,8 @@ class Event < ApplicationRecord
   def upcoming?
     started_at >= Time.current
   end
+
+  def past?
+    started_at < Time.current
+  end
 end

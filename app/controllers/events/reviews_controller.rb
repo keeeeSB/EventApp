@@ -2,7 +2,7 @@ class Events::ReviewsController < Events::ApplicationController
   before_action :set_review, only: %i[edit update destroy]
 
   def new
-    @review = current_user.reviews.build
+    @review = current_user.reviews.build(event_id: params[:event_id])
   end
 
   def edit
