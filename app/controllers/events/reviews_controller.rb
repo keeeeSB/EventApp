@@ -35,7 +35,7 @@ class Events::ReviewsController < Events::ApplicationController
   private
 
   def set_review
-    @review = current_user.reviews.find(params[:id])
+    @review = current_user.reviews.find_by(event_id: params[:event_id])
   end
 
   def review_params
