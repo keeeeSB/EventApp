@@ -56,7 +56,7 @@
           %p 既にレビューを投稿済みです。
 
     - @event.reviews.preload(:user).order(created_at: :desc, id: :desc).each do |review|
-      .card.mb-3.shadow-sm.border-0.rounded-3
+      .card.mb-3.shadow-sm.border-0.rounded-3{ data: { test_class: 'review-card' } }
         .card-body
           .d-flex.justify-content-between.align-items-center.mb-2
             %strong= review.user.name
