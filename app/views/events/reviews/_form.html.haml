@@ -1,0 +1,10 @@
+.row.justify-content-center
+  .col-md-6
+    = simple_form_for(review, url: event_review_path(review.event)) do |f|
+      .form-inputs
+        = f.input :rating, as: :select, collection: 1..5
+        = f.input :comment, as: :text, input_html: { rows: 3 }
+
+      .input-actions.text-center
+        = f.button :submit, '投稿する', class: 'btn btn-outline-primary'
+        = link_to 'キャンセルする', event_path(review.event), class: 'btn btn-link'

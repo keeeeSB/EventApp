@@ -9,3 +9,6 @@ ja:
         started_at: 開催日時
         venue: 開催場所
         category: カテゴリー
+      review:
+        rating: 評価
+        comment: コメント

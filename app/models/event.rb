@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   belongs_to :category
   has_many :entries, dependent: :destroy
   has_many :entry_users, through: :entries, source: :user
+  has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true, length: { maximum: 500 }
@@ -16,5 +17,9 @@ class Event < ApplicationRecord
 
   def upcoming?
     started_at >= Time.current
+  end
+
+  def past?
+    started_at < Time.current
   end
 end
