@@ -1,5 +1,9 @@
 .card.mb-3.shadow-sm.border-0.rounded-3
   .card-body.py-3.text-center
+    - if local_assigns[:index].present? && index <= 3
+      .crown{ class: "crown-#{index}" }
+        %i.bi.bi-award-fill
+
     = link_to event_path(event), class: 'text-decoration-none text-black' do
       %h4.card-title.fw-semibold.mb-3= event.title
     %p.mb-1
