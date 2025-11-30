@@ -33,8 +33,14 @@
           %strong
             = @event.entries_count
             人
-        %span.badge.bg-primary.fs-6
+        %span.badge.bg-primary.fs-6.mb-2
           .bi.bi-tag= @event.category.name
+        - if @event.reviews.exists?
+          %p
+            平均レビュー:
+            %strong
+              = @event.reviews.average(:rating)&.round(1) || 0
+              (#{@event.reviews.count}件)
 
         - if @event.user == current_user
           .text-end

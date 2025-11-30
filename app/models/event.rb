@@ -18,7 +18,8 @@ class Event < ApplicationRecord
     left_joins(:reviews)
       .select(
         'events.*,
-         COALESCE(AVG(reviews.rating), 0) AS average_rating'
+         COALESCE(AVG(reviews.rating), 0) AS average_rating,
+         COUNT(reviews.id) AS reviews_count'
       )
       .group('events.id')
   }

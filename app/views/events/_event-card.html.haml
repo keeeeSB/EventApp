@@ -19,8 +19,14 @@
       %strong
         = event.entries_count
         人
-    %span.badge.bg-primary
+    %span.badge.bg-primary.mb-2
       .bi.bi-tag= event.category.name
+    - if event.reviews.exists?
+      %p
+        平均レビュー:
+        %strong
+          = event.average_rating.round(1)
+          (#{event.reviews_count}件)
 
     - if event.user == current_user
       .text-end
