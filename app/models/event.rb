@@ -13,7 +13,7 @@ class Event < ApplicationRecord
   scope :default_order, -> { order(id: :asc) }
   scope :upcoming, -> { where('started_at >= ?', Time.current) }
   scope :past, -> { where('started_at < ?', Time.current) }
-  scope :popular, -> { order(entries_count: :desc, started_at: :asc, id: :asc) }
+  scope :popular_order, -> { order(entries_count: :desc, started_at: :asc, id: :asc) }
   scope :with_review_stats, -> {
     left_joins(:reviews)
       .select(

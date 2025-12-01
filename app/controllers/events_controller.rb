@@ -4,10 +4,10 @@ class EventsController < ApplicationController
   end
 
   def upcoming
-    @events = Event.upcoming.popular.page(params[:page])
+    @events = Event.upcoming.popular_order.page(params[:page])
   end
 
   def past
-    @events = Event.past.order(started_at: :desc, id: :desc).page(params[:page])
+    @events = Event.past.with_review_stats.order(started_at: :desc, id: :desc).page(params[:page])
   end
 end
