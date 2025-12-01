@@ -1,0 +1,19 @@
+%h2.text-center.mb-2 イベントランキング
+
+- if params[:slug].present?
+  %h4.text-center.text-primary.mb-2 ##{params[:slug]}
+
+.row.justify-content-center.mb-4
+  .col-md-8.text-center
+    .btn-group.flex-nowrap.overflow-auto
+      = link_to '全体', events_ranking_index_path, class: 'btn btn-outline-primary btn-sm'
+      - Category.default_order.each do |category|
+        = link_to category.name, events_ranking_index_path(slug: category.name), class: 'btn btn-outline-primary btn-sm'
+
+.row.justify-content-center
+  .col-md-6
+    - if @events.exists?
+      - @events.preload(:user, :category).each.with_index(1) do |event, index|
+        = render 'events/event-card', event: event, index:
+    - else
+      %p.text-center ランキング対象のイベントがありません。

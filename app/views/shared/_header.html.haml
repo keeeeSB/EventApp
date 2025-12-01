@@ -13,6 +13,8 @@
             = link_to '開催済みイベント', past_events_path, class: 'nav-link'
           - if user_signed_in?
             %li.nav-item
+              = link_to 'イベントランキング', events_ranking_index_path, class: 'nav-link'
+            %li.nav-item
               = link_to 'イベント作成', new_users_event_path, class: 'nav-link'
             %li.nav-item
               = link_to '参加予定イベント', users_my_events_path, class: 'nav-link'

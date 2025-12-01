@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :my_events, only: %i[index]
   end
 
+  namespace :events do
+    resources :ranking, param: :slug, only: %i[index]
+  end
+
   resources :events, only: %i[show] do
     collection do
       get :upcoming
