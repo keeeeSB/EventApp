@@ -1,4 +1,7 @@
-%h2.text-center.mb-3 イベントランキング
+%h2.text-center.mb-2 イベントランキング
+
+- if params[:slug].present?
+  %h4.text-center.text-primary.mb-2 ##{params[:slug]}
 
 .row.justify-content-center.mb-4
   .col-md-8.text-center

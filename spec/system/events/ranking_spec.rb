@@ -77,6 +77,8 @@ RSpec.describe 'ランキング機能', type: :system do
         click_link '趣味'
         expect(page).to have_current_path events_ranking_index_path(slug: '趣味')
 
+        expect(page).to have_selector 'h4', text: '#趣味'
+
         within first('.card') do
           expect(page).to have_content 'コーヒーで一息'
           expect(page).to have_content '趣味'
