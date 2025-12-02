@@ -1,6 +1,6 @@
 .row.justify-content-center
-  .col-md-7
-    = simple_form_for([:users, event]) do |f|
+  .col-md-6
+    = simple_form_for([:admins, event]) do |f|
       .form-inputs
         = f.input :title, autofocus: true
         = f.input :description, as: :text, input_html: { rows: 5 }
@@ -9,5 +9,5 @@
         = f.association :category, collection: Category.default_order
 
       .form-actions.text-center.mt-3
-        = f.button :submit, class: 'btn btn-outline-primary'
-        = link_to 'キャンセルする', root_path, class: 'btn btn-link'
+        = f.button :submit, class: 'btn btn-outline-primary mt-3'
+        = link_to 'キャンセルする', admins_events_path, class: 'btn btn-link mt-3'
