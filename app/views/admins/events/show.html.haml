@@ -1,0 +1,33 @@
+%h2.text-center.mb-4 イベント詳細
+
+.row.justify-content-center
+  .col-md-8
+    %table.table.table-bordered.w-100
+      %tbody
+        %tr
+          %th.text-center.w-25 タイトル
+          %td= @event.title
+        %tr
+          %th.text-center.w-25 説明文
+          %td= simple_format(@event.description)
+        %tr
+          %th.text-center.w-25 開催日時
+          %td= l(@event.started_at, format: :default)
+        %tr
+          %th.text-center.w-25 開催場所
+          %td= @event.venue
+        %tr
+          %th.text-center.w-25 作成者
+          %td= @event.user.name
+        %tr
+          %th.text-center.w-25 カテゴリー
+          %td= @event.category.name
+
+    .text-center.mt-4
+      = link_to '一覧に戻る', admins_events_path, class: 'btn btn-outline-secondary me-2'
+      = button_to '削除する',
+                  admins_event_path(@event),
+                  method: :delete,
+                  data: { turbo_confirm: '本当に削除しますか？' },
+                  form: { class: 'd-inline' },
+                  class: 'btn btn-outline-danger'
