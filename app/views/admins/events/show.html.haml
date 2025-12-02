@@ -5,26 +5,30 @@
     %table.table.table-bordered.w-100
       %tbody
         %tr
-          %th.text-center.w-25 タイトル
+          %th.text-center タイトル
           %td= @event.title
         %tr
-          %th.text-center.w-25 説明文
+          %th.text-center 説明
           %td= simple_format(@event.description)
         %tr
-          %th.text-center.w-25 開催日時
+          %th.text-center 開催日時
           %td= l(@event.started_at, format: :default)
         %tr
-          %th.text-center.w-25 開催場所
+          %th.text-center 開催場所
           %td= @event.venue
         %tr
-          %th.text-center.w-25 作成者
+          %th.text-center 作成者
           %td= @event.user.name
         %tr
-          %th.text-center.w-25 カテゴリー
+          %th.text-center カテゴリー
           %td= @event.category.name
+        %tr
+          %th.text-center 開催状況
+          %td= render 'admins/events/status_badge', event: @event
 
     .text-center.mt-4
       = link_to '一覧に戻る', admins_events_path, class: 'btn btn-outline-secondary me-2'
+      = link_to '編集する', edit_admins_event_path(@event), class: 'btn btn-outline-warning me-2'
       = button_to '削除する',
                   admins_event_path(@event),
                   method: :delete,
