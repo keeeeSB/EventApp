@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, presence: true, length: { maximum: 100 }
+
+  scope :default_order, -> { order(id: :asc) }
 end
