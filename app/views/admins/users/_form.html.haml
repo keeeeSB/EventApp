@@ -1,0 +1,10 @@
+.row.justify-content-center
+  .col-md-6
+    = simple_form_for([:admins, user]) do |f|
+      .form-inputs
+        = f.input :name, autofocus: true
+        = f.input :introduction, as: :text, input_html: { rows: 5 }
+
+      .form-actions.text-center.mt-3
+        = f.button :submit, class: 'btn btn-outline-primary mt-3'
+        = link_to 'キャンセルする', admins_users_path, class: 'btn btn-link mt-3'
