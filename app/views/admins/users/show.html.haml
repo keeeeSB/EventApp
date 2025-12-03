@@ -12,7 +12,7 @@
           %td= @user.email
         %tr
           %th.text-center 自己紹介
-          %td= simple_format(@user.introduction)
+          %td= h(@user.introduction)
         %tr
           %th.text-center 承認状況
           %td= render 'admins/users/confirm_status_badge', user: @user
