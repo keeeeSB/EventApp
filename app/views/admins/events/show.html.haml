@@ -9,7 +9,7 @@
           %td= @event.title
         %tr
           %th.text-center 説明
-          %td= simple_format(@event.description)
+          %td= h(@event.description)
         %tr
           %th.text-center 開催日時
           %td= l(@event.started_at, format: :default)

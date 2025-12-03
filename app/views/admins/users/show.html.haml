@@ -1,0 +1,28 @@
+%h2.text-center.mb-4 ユーザー詳細
+
+.row.justify-content-center
+  .col-md-8
+    %table.table.table-bordered.w-100
+      %tbody
+        %tr
+          %th.text-center 名前
+          %td= @user.name
+        %tr
+          %th.text-center メールアドレス
+          %td= @user.email
+        %tr
+          %th.text-center 自己紹介
+          %td= h(@user.introduction)
+        %tr
+          %th.text-center 承認状況
+          %td= render 'admins/users/confirm_status_badge', user: @user
+
+    .text-center.mt-4
+      = link_to '一覧に戻る', admins_users_path, class: 'btn btn-outline-secondary me-2'
+      = link_to '編集する', edit_admins_user_path(@user), class: 'btn btn-outline-warning me-2'
+      = button_to '削除する',
+                  admins_user_path(@user),
+                  method: :delete,
+                  data: { turbo_confirm: '本当に削除しますか？' },
+                  form: { class: 'd-inline' },
+                  class: 'btn btn-outline-danger'
