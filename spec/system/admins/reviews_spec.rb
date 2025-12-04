@@ -53,13 +53,13 @@ RSpec.describe 'レビュー管理機能', type: :system do
       expect(page).to have_content 'Ruby勉強会'
       expect(page).to have_content 'とても良かったです。'
 
-      expect do
+      expect {
         accept_confirm do
           click_button '削除する'
         end
         expect(page).to have_content 'レビューを削除しました。'
         expect(page).to have_current_path admins_reviews_path
-      end.to change(Review, :count).by(-1)
+      }.to change(Review, :count).by(-1)
 
       expect(page).to have_selector 'h2', text: 'レビュー一覧'
       expect(page).not_to have_content 'Ruby勉強会'
