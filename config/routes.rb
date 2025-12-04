@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   namespace :admins do
     root 'static_pages#dashboard'
     resources :categories, only: %i[index show new edit create update destroy]
-    resources :events, only: %i[index show edit update destroy]
+    resources :events, only: %i[index show edit update destroy] do
+      resources :reviews, only: %i[index show destroy], module: :events
+    end
     resources :users, only: %i[index show edit update destroy]
+    resources :reviews, only: %i[index show destroy]
   end
 
   namespace :users do

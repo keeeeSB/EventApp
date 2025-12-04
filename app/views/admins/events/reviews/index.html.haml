@@ -1,0 +1,30 @@
+%h2.text-center.mb-4 対象イベントのレビュー一覧
+
+.row.justify-content-center
+  .col-md-10
+    - if @reviews.exists?
+      %table.table.table-bordered.align-middle.text-center
+        %thead
+          %tr
+            %th.w-10 ID
+            %th 投稿者
+            %th 評価
+            %th 投稿日時
+            %th 操作
+        %tbody
+          - @reviews.preload(:user).each do |review|
+            %tr
+              %td= review.id
+              %td= review.user.name
+              %td= review.rating
+              %td= l(review.created_at, format: :default)
+              %td
+                = link_to '詳細', admins_event_review_path(@event, review), class: 'btn btn-sm btn-outline-secondary me-2'
+                = button_to '削除',
+                            admins_event_review_path(@event, review),
+                            method: :delete,
+                            data: { turbo_confirm: '本当に削除しますか？' },
+                            form: { class: 'd-inline' },
+                            class: 'btn btn-sm btn-outline-danger'
+    - else
+      %p.text-center イベントがありません。
