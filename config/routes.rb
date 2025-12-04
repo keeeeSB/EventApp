@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :reviews, only: %i[index show destroy], module: :events
     end
     resources :users, only: %i[index show edit update destroy]
+    resources :reviews, only: %i[index show destroy]
   end
 
   namespace :users do
