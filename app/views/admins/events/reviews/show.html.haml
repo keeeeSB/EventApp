@@ -1,0 +1,30 @@
+%h2.text-center.mb-4 レビュー詳細
+
+.row.justify-content-center
+  .col-md-8
+    %table.table.table-bordered.w-100
+      %tbody
+        %tr
+          %th.text-center 投稿者
+          %td= @review.user.name
+        %tr
+          %th.text-center レビューしたイベント
+          %td= @review.event.title
+        %tr
+          %th.text-center 評価
+          %td= @review.rating
+        %tr
+          %th.text-center コメント
+          %td= @review.comment
+        %tr
+          %th.text-center 投稿日時
+          %td= l(@review.created_at, format: :default)
+
+    .text-center.mt-4
+      = link_to '一覧に戻る', admins_reviews_path, class: 'btn btn-outline-secondary me-2'
+      = button_to '削除する',
+                  admins_review_path(@review),
+                  method: :delete,
+                  data: { turbo_confirm: '本当に削除しますか？' },
+                  form: { class: 'd-inline' },
+                  class: 'btn btn-outline-danger'
