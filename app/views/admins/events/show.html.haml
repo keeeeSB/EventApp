@@ -25,6 +25,11 @@
         %tr
           %th.text-center 開催状況
           %td= render 'admins/events/status_badge', event: @event
+        %tr
+          %th.text-center レビュー件数
+          %td.d-flex.align-items-center.gap-2
+            = @event.reviews.count
+            = link_to 'レビュー一覧へ', admins_event_reviews_path(@event), class: 'btn btn-link text-secondary'
 
     .text-center.mt-4
       = link_to '一覧に戻る', admins_events_path, class: 'btn btn-outline-secondary me-2'
